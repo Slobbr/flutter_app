@@ -1,25 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:slobbr_app/utils/const.dart';
+import 'package:slobbr_app/screens/main_screen.dart';
+import 'package:animations/animations.dart';
 
 void main() {
   runApp(const SlobbrApp());
 }
 
-class SlobbrApp extends StatelessWidget {
+class SlobbrApp extends StatefulWidget {
   const SlobbrApp({Key? key}) : super(key: key);
 
   @override
+  _SlobbrAppState createState() => _SlobbrAppState();
+}
+
+class _SlobbrAppState extends State<SlobbrApp> {
+  @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomeScreen(),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: Constants.appName,
+      theme: Constants.lightTheme,
+      home: MainScreen(),
     );
   }
 }
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar());
-  }
-}
