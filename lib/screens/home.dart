@@ -37,7 +37,7 @@ class Home extends StatelessWidget {
           const Padding(
             padding: EdgeInsets.all(20.0),
             child: Text(
-              "Wat eten vandaag?",
+              "Wat eten we vandaag?",
               style: TextStyle(
                 fontSize: 30.0,
                 fontWeight: FontWeight.w600,
