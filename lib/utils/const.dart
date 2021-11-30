@@ -8,6 +8,7 @@ class Constants {
   static Color lightBG = const Color(0xFFFBFBF2);
 
   static ThemeData lightTheme = ThemeData(
+    fontFamily: 'ProductSans',
     backgroundColor: lightBG,
     primaryColor: lightPrimary,
     accentColor: lightAccent,

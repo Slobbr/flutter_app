@@ -31,9 +31,9 @@ class SearchBar extends StatelessWidget {
             ),
             borderRadius: BorderRadius.circular(5.0),
           ),
-          hintText: "Crêpe, quiche",
+          hintText: "Amsterdam, Den Haag",
           prefixIcon: Icon(
-            Icons.restaurant,
+            Icons.place,
             color: Colors.blueGrey[300],
           ),
           hintStyle: TextStyle(

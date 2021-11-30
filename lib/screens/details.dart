@@ -16,13 +16,7 @@ class Details extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
         actions: <Widget>[
-          IconButton(
-            icon: IconBadge(
-              icon: Icons.notifications_none,
-              color: Color(0xFF001B2E)
-            ),
-            onPressed: () {},
-          ),
+
         ],
       ),
       body: ListView(

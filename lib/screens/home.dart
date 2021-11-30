@@ -6,6 +6,8 @@ import 'package:slobbr_app/widgets/search_bar.dart';
 import 'package:slobbr_app/widgets/vertical_item_card.dart';
 import 'package:animations/animations.dart';
 
+import 'details.dart';
+
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -15,19 +17,27 @@ class Home extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: IconBadge(
-              icon: Icons.notifications_none,
+              icon: Icons.shopping_cart_outlined,
               color: Color(0xFF001B2E)
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return Details();
+                  }
+                ),
+              );
+            },
           ),
         ],
       ),
       body: ListView(
         children: <Widget>[
-          Padding(
+          const Padding(
             padding: EdgeInsets.all(20.0),
             child: Text(
-              "Slobbr",
+              "Wat eten vandaag?",
               style: TextStyle(
                 fontSize: 30.0,
                 fontWeight: FontWeight.w600,

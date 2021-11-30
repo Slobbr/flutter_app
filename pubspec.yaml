@@ -30,6 +30,8 @@ dependencies:
   flutter:
     sdk: flutter
   animations: ^2.0.2
+  location: ^4.2.0
+  #mapbox_gl: ^0.14.0
   #firebase_core: ^1.10.0
   #firebase_auth: "^3.2.0"
 
@@ -100,3 +102,16 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+  fonts:
+    - family: ProductSans
+      fonts:
+        - asset: assets/fonts/Product-Sans-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Product-Sans-Bold-Italic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/Product-Sans-Italic.ttf
+          style: italic
+        - asset: assets/fonts/Product-Sans-Regular.ttf
+
