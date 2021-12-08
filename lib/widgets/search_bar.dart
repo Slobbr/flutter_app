@@ -5,7 +5,7 @@ import 'package:geocoder_flutter/geocoder.dart';
 class SearchBar extends StatelessWidget {
   final TextEditingController _searchControl = new TextEditingController();
 
-  getCurrentLocationData() async {
+  Future<LocationData?> getCurrentLocationData() async {
 
     Location location = new Location();
     bool _serviceEnabled;
@@ -16,7 +16,7 @@ class SearchBar extends StatelessWidget {
     if(!_serviceEnabled){
       _serviceEnabled = await location.requestService();
       if(!_serviceEnabled){
-        return;
+        return null;
       }
     }
 
@@ -24,7 +24,7 @@ class SearchBar extends StatelessWidget {
     if(_permissionGranted == PermissionStatus.denied){
       _permissionGranted = await location.requestPermission();
       if(_permissionGranted != PermissionStatus.granted){
-        return;
+        return null;
       }
     }
 
@@ -33,21 +33,24 @@ class SearchBar extends StatelessWidget {
 
   }
 
-  getCurrentAddress() async {
+  Future<Address?> getCurrentAddress() async {
 
     LocationData _currentLocationData;
 
-    _currentLocationData = getCurrentLocationData();
+    _currentLocationData = (await getCurrentLocationData())!;
     final coordinates = new Coordinates(_currentLocationData.latitude, _currentLocationData.longitude);
     var addresses = await Geocoder.local.findAddressesFromCoordinates(coordinates);
     var first = addresses.first;
 
-    return first.featureName;
+    return first;
 
   }
 
+
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
+
     return Container(
       decoration: BoxDecoration(
         color: Colors.blueGrey[50],
@@ -55,38 +58,51 @@ class SearchBar extends StatelessWidget {
           Radius.circular(5.0),
         ),
       ),
-      child: TextField(
-        style: TextStyle(
-          fontSize: 15.0,
-          color: Colors.blueGrey[300],
-        ),
-        decoration: InputDecoration(
-          contentPadding: const EdgeInsets.all(10.0),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5.0),
-            borderSide: const BorderSide(
-              color: Colors.white,
+      child: FutureBuilder<Address?>(
+        future: getCurrentAddress(),
+        builder: (BuildContext context, AsyncSnapshot<Address?> snapshot) {
+          var address;
+
+          if(snapshot.hasData){
+            address = "${snapshot.data!.thoroughfare} ${snapshot.data!.featureName}, ${snapshot.data!.locality}";
+          }else{
+            address = "Amsterdam, Den Haag";
+          }
+
+          return TextField(
+            style: TextStyle(
+              fontSize: 15.0,
+              color: Colors.blueGrey[300],
             ),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(
-              color: Colors.white,
+            decoration: InputDecoration(
+              contentPadding: const EdgeInsets.all(10.0),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(5.0),
+                borderSide: const BorderSide(
+                  color: Colors.white,
+                ),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  color: Colors.white,
+                ),
+                borderRadius: BorderRadius.circular(5.0),
+              ),
+              hintText: address,
+              prefixIcon: Icon(
+                Icons.place,
+                color: Colors.blueGrey[300],
+              ),
+              hintStyle: TextStyle(
+                fontSize: 15.0,
+                color: Colors.blueGrey[300],
+              ),
             ),
-            borderRadius: BorderRadius.circular(5.0),
-          ),
-          hintText: "${getCurrentAddress()}",
-          prefixIcon: Icon(
-            Icons.place,
-            color: Colors.blueGrey[300],
-          ),
-          hintStyle: TextStyle(
-            fontSize: 15.0,
-            color: Colors.blueGrey[300],
-          ),
-        ),
-        maxLines: 1,
-        controller: _searchControl,
-      ),
+            maxLines: 1,
+            controller: _searchControl,
+          );
+        }
+      )
     );
   }
 }
