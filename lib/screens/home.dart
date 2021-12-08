@@ -24,7 +24,7 @@ class Home extends StatelessWidget {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (BuildContext context) {
-                    return Details();
+                    return Details(dishIndex: 1);
                   }
                 ),
               );
@@ -66,7 +66,7 @@ class Home extends StatelessWidget {
         itemCount: dishes == null ? 0 : dishes.length,
         itemBuilder: (BuildContext context, int index) {
           Map place = dishes.reversed.toList()[index];
-          return HorizontalItemCard(place: place);
+          return HorizontalItemCard(place: place, dishIndex: index,);
         },
       ),
     );
@@ -82,7 +82,7 @@ class Home extends StatelessWidget {
         itemCount: dishes == null ? 0 : dishes.length,
         itemBuilder: (BuildContext context, int index) {
           Map place = dishes[index];
-          return VerticalItemCard(place: place);
+          return VerticalItemCard(place: place, dishIndex: index);
         },
       ),
     );

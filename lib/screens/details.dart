@@ -3,6 +3,11 @@ import 'package:slobbr_app/utils/sample_data.dart';
 import 'package:slobbr_app/widgets/icon_badge.dart';
 
 class Details extends StatelessWidget {
+  final int dishIndex;
+
+  Details({required this.dishIndex});
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +41,7 @@ class Details extends StatelessWidget {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      "${dishes[0]["name"]}",
+                      "${dishes[this.dishIndex]["name"]}",
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 20,
@@ -64,7 +69,7 @@ class Details extends StatelessWidget {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      "${dishes[0]["location"]}",
+                      "${dishes[this.dishIndex]["location"]}",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 13,
@@ -80,7 +85,7 @@ class Details extends StatelessWidget {
               Container(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "${dishes[0]["price"]}",
+                  "${dishes[this.dishIndex]["price"]}",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 17,
@@ -106,7 +111,7 @@ class Details extends StatelessWidget {
               Container(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "${dishes[0]["details"]}",
+                  "${dishes[this.dishIndex]["details"]}",
                   style: TextStyle(
                     fontWeight: FontWeight.normal,
                     fontSize: 15.0,

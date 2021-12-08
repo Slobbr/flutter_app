@@ -4,8 +4,9 @@ import '../screens/details.dart';
 
 class VerticalItemCard extends StatelessWidget {
   final Map place;
+  final int dishIndex;
 
-  VerticalItemCard({required this.place});
+  VerticalItemCard({required this.place, required this.dishIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +94,7 @@ class VerticalItemCard extends StatelessWidget {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (BuildContext context) {
-                return Details();
+                return Details(dishIndex: this.dishIndex,);
               },
             ),
           );

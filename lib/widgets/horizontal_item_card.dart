@@ -4,8 +4,9 @@ import '../screens/details.dart';
 
 class HorizontalItemCard extends StatelessWidget {
   final Map place;
+  final int dishIndex;
 
-  HorizontalItemCard({required this.place});
+  HorizontalItemCard({required this.place, required this.dishIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +61,7 @@ class HorizontalItemCard extends StatelessWidget {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (BuildContext context) {
-                return Details();
+                return Details(dishIndex: this.dishIndex,);
               },
             ),
           );
