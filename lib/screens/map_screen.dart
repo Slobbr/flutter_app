@@ -1,40 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
-// import 'package:mapbox_gl/mapbox_gl.dart';
+import 'package:mapbox_gl/mapbox_gl.dart';
+import 'package:slobbr_app/widgets/icon_badge.dart';
 
-/* Future<LatLng> acquireCurrentLocation() async {
-  // Initializes the plugin and starts listening for potential platform events
-  Location location = new Location();
+class MapScreen extends StatefulWidget {
+  const MapScreen({Key? key}) : super(key: key);
 
-  // Whether or not the location service is enabled
-  bool serviceEnabled;
+  @override
+  _MapScreenState createState() => _MapScreenState();
+}
 
-  // Status of a permission request to use location services
-  PermissionStatus permissionGranted;
+class _MapScreenState extends State<MapScreen> {
 
-  // Check if the location service is enabled, and if not, then request it. In
-  // case the user refuses to do it, return immediately with a null result
-  serviceEnabled = await location.serviceEnabled();
-  if (!serviceEnabled) {
-    serviceEnabled = await location.requestService();
-    if (!serviceEnabled) {
-      return null;
+  Future<LocationData?> getCurrentLocationData() async {
+    Location location = new Location();
+    bool _serviceEnabled;
+    PermissionStatus _permissionGranted;
+    LocationData _locationData;
+
+    _serviceEnabled = await location.serviceEnabled();
+    if (!_serviceEnabled) {
+      _serviceEnabled = await location.requestService();
+      if (!_serviceEnabled) {
+        return null;
+      }
     }
+
+    _permissionGranted = await location.hasPermission();
+    if (_permissionGranted == PermissionStatus.denied) {
+      _permissionGranted = await location.requestPermission();
+      if (_permissionGranted != PermissionStatus.granted) {
+        return null;
+      }
+    }
+
+    _locationData = await location.getLocation();
+    return _locationData;
   }
 
-  // Check for location permissions; similar to the workflow in Android apps,
-  // so check whether the permissions is granted, if not, first you need to
-  // request it, and then read the result of the request, and only proceed if
-  // the permission was granted by the user
-  permissionGranted = await location.hasPermission();
-  if (permissionGranted == PermissionStatus.denied) {
-    permissionGranted = await location.requestPermission();
-    if (permissionGranted != PermissionStatus.granted) {
-      return null;
-    }
-  }
 
-  // Gets the current location of the user
-  final locationData = await location.getLocation();
-  return LatLng(locationData.latitude, locationData.longitude);
-}*/
+  /*  */
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+        body: MapboxMap(
+          accessToken: "pk.eyJ1IjoidGhlZ2lhbnRyZWRwYW5kYSIsImEiOiJjajN5bDR6bXUwMDFuMnhvODgzZWUycHZ0In0.1NOfAml6fG6aigkmQ1TAfg",
+            initialCameraPosition: CameraPosition(
+                zoom: 15.0,
+                target: LatLng(52.210515, 5.463720)
+            )
+        ),
+    );
+  }
+}
+
+
