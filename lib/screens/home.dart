@@ -65,7 +65,7 @@ class Home extends StatelessWidget {
         primary: false,
         itemCount: dishes == null ? 0 : dishes.length,
         itemBuilder: (BuildContext context, int index) {
-          Map place = dishes.reversed.toList()[index];
+          Map place = dishes[index];
           return HorizontalItemCard(place: place, dishIndex: index,);
         },
       ),

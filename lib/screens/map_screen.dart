@@ -38,20 +38,43 @@ class _MapScreenState extends State<MapScreen> {
     return _locationData;
   }
 
-
-  /*  */
-
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
-        body: MapboxMap(
-          accessToken: "pk.eyJ1IjoidGhlZ2lhbnRyZWRwYW5kYSIsImEiOiJjajN5bDR6bXUwMDFuMnhvODgzZWUycHZ0In0.1NOfAml6fG6aigkmQ1TAfg",
+      body: FutureBuilder<LocationData?>(
+        future: getCurrentLocationData(),
+        builder: (BuildContext context, AsyncSnapshot<LocationData?> snapshot){
+
+          double longitude;
+          double latitude;
+
+          if(snapshot.hasData){
+            longitude = snapshot.data!.longitude!;
+            latitude = snapshot.data!.latitude!;
+          }else {
+            latitude = 52.210530;
+            longitude = 5.463793;
+          }
+
+
+
+          return MapboxMap(
+            accessToken: "pk.eyJ1IjoiYmFzaGF6ZXZlbGQiLCJhIjoiY2twczU0bjJtMDA2ZTJvczdiMno0ZjFlaSJ9.ScVt-VQcblb3YtYW_0ltCA",
+            styleString: "mapbox://styles/bashazeveld/ckxfyhpyeftjk14mj5m2jxgcx",
             initialCameraPosition: CameraPosition(
-                zoom: 15.0,
-                target: LatLng(52.210515, 5.463720)
-            )
-        ),
+              zoom: 15.0,
+              target: LatLng(latitude, longitude)
+            ),
+            /*onMapCreated: (MapboxMapController controller) {
+              controller.addSymbol(SymbolOptions(
+                  iconImage:
+                )
+              );
+            }*/
+          );
+        }
+      )
     );
   }
 }
