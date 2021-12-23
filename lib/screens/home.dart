@@ -4,9 +4,7 @@ import 'package:slobbr_app/widgets/horizontal_item_card.dart';
 import 'package:slobbr_app/widgets/icon_badge.dart';
 import 'package:slobbr_app/widgets/search_bar.dart';
 import 'package:slobbr_app/widgets/vertical_item_card.dart';
-import 'package:animations/animations.dart';
-
-import 'details.dart';
+import 'package:slobbr_app/screens/login_screen.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -24,7 +22,7 @@ class Home extends StatelessWidget {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (BuildContext context) {
-                    return Details(dishIndex: 1);
+                    return const LoginScreen();
                   }
                 ),
               );
