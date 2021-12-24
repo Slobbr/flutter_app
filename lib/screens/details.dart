@@ -127,7 +127,9 @@ class Details extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: Icon(
           Icons.add_shopping_cart,
+          color: Theme.of(context).colorScheme.onPrimary
         ),
+        backgroundColor: Theme.of(context).colorScheme.primary,
         onPressed: () {},
       ),
     );

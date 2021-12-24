@@ -15,4 +15,12 @@ class Utils {
     return returnDouble;
   }
 
+  bool isDarkModeEnabled() {
+    if (MediaQuery.of(context).platformBrightness == Brightness.dark){
+      return true;
+  }else {
+      return false;
+  }
+}
+
 }

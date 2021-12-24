@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:mapbox_gl/mapbox_gl.dart';
+import 'package:slobbr_app/utils/utils.dart';
 import 'package:slobbr_app/widgets/icon_badge.dart';
 
 class MapScreen extends StatefulWidget {
@@ -48,6 +49,7 @@ class _MapScreenState extends State<MapScreen> {
 
           double longitude;
           double latitude;
+          String style;
 
           if(snapshot.hasData){
             longitude = snapshot.data!.longitude!;
@@ -57,11 +59,16 @@ class _MapScreenState extends State<MapScreen> {
             longitude = 5.463793;
           }
 
+          if(Utils(context: context).isDarkModeEnabled()){
+            style = "mapbox://styles/bashazeveld/ckxkim34l0aqx14o5f3pd8gs8";
+          }else {
+            style = "mapbox://styles/bashazeveld/ckxfyhpyeftjk14mj5m2jxgcx";
+          }
 
 
           return MapboxMap(
             accessToken: "pk.eyJ1IjoiYmFzaGF6ZXZlbGQiLCJhIjoiY2twczU0bjJtMDA2ZTJvczdiMno0ZjFlaSJ9.ScVt-VQcblb3YtYW_0ltCA",
-            styleString: "mapbox://styles/bashazeveld/ckxfyhpyeftjk14mj5m2jxgcx",
+            styleString: style,
             initialCameraPosition: CameraPosition(
               zoom: 15.0,
               target: LatLng(latitude, longitude)
