@@ -11,12 +11,12 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFFBFBF2),
+        backgroundColor: Theme.of(context).colorScheme.background,
         actions: <Widget>[
           IconButton(
             icon: IconBadge(
               icon: Icons.shopping_cart_outlined,
-              color: Color(0xFF001B2E)
+              color: Theme.of(context).colorScheme.onBackground
             ),
             onPressed: () {
               Navigator.of(context).push(

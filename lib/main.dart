@@ -21,6 +21,7 @@ class _SlobbrAppState extends State<SlobbrApp> {
       debugShowCheckedModeBanner: false,
       title: Constants.appName,
       theme: Constants.lightTheme,
+      darkTheme: Constants.darkTheme,
       home: MainScreen(),
     );
   }

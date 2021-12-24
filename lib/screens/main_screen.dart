@@ -38,7 +38,7 @@ class _MainScreenState extends State<MainScreen> {
             SizedBox(width: 7.0),
           ],
         ),
-        color: const Color(0xFFFBFBF2),
+        color: Theme.of(context).colorScheme.surface,
       ),
     );
   }
@@ -70,7 +70,7 @@ class _MainScreenState extends State<MainScreen> {
     return IconButton(
       icon: badge ? IconBadge(icon: icon, size: 24.0) : Icon(icon, size: 24.0),
       color:
-      _page == page ? Color(0xFF001B2E) : Colors.blueGrey[300],
+      _page == page ? Color(0xFF90A4AE) : Theme.of(context).colorScheme.onSurface,
       onPressed: () => _pageController.jumpToPage(page),
     );
   }

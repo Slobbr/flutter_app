@@ -39,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 "Log in met je Slobbraccount of registreer je voor en nieuw account.",
                 style: TextStyle(
                   fontSize: 17.0,
-                  color: Color.fromRGBO(33, 33, 33, 100)
+                  color: Color(0xFF90A4AE)
                 ),
                 textAlign: TextAlign.center,
               )
