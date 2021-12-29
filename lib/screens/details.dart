@@ -12,11 +12,11 @@ class Details extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFFBFBF2),
+        backgroundColor: Theme.of(context).colorScheme.background,
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
-            color: Color(0xFF001B2E)
+            color: Theme.of(context).colorScheme.onBackground
           ),
           onPressed: () => Navigator.pop(context),
         ),
@@ -127,7 +127,9 @@ class Details extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: Icon(
           Icons.add_shopping_cart,
+          color: Theme.of(context).colorScheme.onPrimary
         ),
+        backgroundColor: Theme.of(context).colorScheme.primary,
         onPressed: () {},
       ),
     );

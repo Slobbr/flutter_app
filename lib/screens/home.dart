@@ -4,27 +4,25 @@ import 'package:slobbr_app/widgets/horizontal_item_card.dart';
 import 'package:slobbr_app/widgets/icon_badge.dart';
 import 'package:slobbr_app/widgets/search_bar.dart';
 import 'package:slobbr_app/widgets/vertical_item_card.dart';
-import 'package:animations/animations.dart';
-
-import 'details.dart';
+import 'package:slobbr_app/screens/login_screen.dart';
 
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFFBFBF2),
+        backgroundColor: Theme.of(context).colorScheme.background,
         actions: <Widget>[
           IconButton(
             icon: IconBadge(
               icon: Icons.shopping_cart_outlined,
-              color: Color(0xFF001B2E)
+              color: Theme.of(context).colorScheme.onBackground
             ),
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (BuildContext context) {
-                    return Details(dishIndex: 1);
+                    return const LoginScreen();
                   }
                 ),
               );
