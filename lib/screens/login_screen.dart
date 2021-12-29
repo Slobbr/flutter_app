@@ -68,6 +68,32 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Colors.blueGrey[300]
                     ),)
               )
+          ),
+          Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Center(
+              child: ElevatedButton(
+                onPressed: () {  },
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+                          (Set<MaterialState> states){
+                            return Theme.of(context).colorScheme.primary;
+                          }
+                  ),
+                  fixedSize: MaterialStateProperty.resolveWith<Size?>(
+                      (Set<MaterialState> states){
+                        return Size(MediaQuery.of(context).size.width - 20, 45.0);
+                  }
+                  )
+                ),
+                child: Text(
+                  "Login",
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onSurface
+                  )
+                ),
+              )
+            )
           )
         ],
       ),
