@@ -5,7 +5,7 @@ class Constants {
 
   static Color lightPrimary = const Color(0xfffcfcff);
   static Color lightAccent = const Color(0xFF001B2E);
-  static Color lightBG = const Color(0xFFFBFBF2);
+  static Color lightBG = const Color(0xFFFFFFFF);
 
   static Color darkBG = const Color(0xFF000000);
   static Color darkSurface = const Color(0xFF262626);

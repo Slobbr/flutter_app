@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Utils {
 
@@ -13,6 +14,10 @@ class Utils {
     double returnDouble = screenHeight / 100 * percentage;
 
     return returnDouble;
+  }
+
+  Future<SharedPreferences> getPrefs() async {
+    return await SharedPreferences.getInstance();
   }
 
   bool isDarkModeEnabled() {
