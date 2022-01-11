@@ -20,6 +20,11 @@ class Utils {
     return await SharedPreferences.getInstance();
   }
 
+  void _initPrefs(context, String test) async {
+    SharedPreferences prefs = await Utils(context: context).getPrefs();
+    prefs.setString('test', test);
+  }
+
   bool isDarkModeEnabled() {
     if (MediaQuery.of(context).platformBrightness == Brightness.dark){
       return true;

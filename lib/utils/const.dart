@@ -3,9 +3,16 @@ import 'package:flutter/material.dart';
 class Constants {
   static String appName = "Slobbr";
 
-  static Color lightPrimary = const Color(0xfffcfcff);
-  static Color lightAccent = const Color(0xFF001B2E);
   static Color lightBG = const Color(0xFFFFFFFF);
+  static Color lightSurface = const Color(0xFFFFFFFF);
+  static Color lightPrimary = const Color(0xFF57A773);
+  static Color lightPrimaryVariant = const Color(0xFF57A773);
+  static Color lightSecondary = const Color(0xFFFBFBF2);
+  static Color lightSecondaryVariant = const Color(0xFFFBFBF2);
+  static Color lightOnBG = const Color(0xFF000000);
+  static Color lightOnSurface = const Color(0xFF000000);
+  static Color lightOnPrimary = const Color(0xFF001B2E);
+  static Color lightOnSecondary = const Color(0xFF001B2E);
 
   static Color darkBG = const Color(0xFF000000);
   static Color darkSurface = const Color(0xFF262626);
@@ -21,10 +28,21 @@ class Constants {
 
   static ThemeData lightTheme = ThemeData(
     fontFamily: 'ProductSans',
-    backgroundColor: lightBG,
-    primaryColor: lightPrimary,
-    accentColor: lightAccent,
-    cursorColor: lightAccent,
+    colorScheme: ColorScheme(
+      brightness: Brightness.light,
+      background: lightBG,
+      surface: lightSurface,
+      primary: lightPrimary,
+      primaryVariant: lightPrimaryVariant,
+      secondary: lightSecondary,
+      secondaryVariant: lightSecondaryVariant,
+      onBackground: lightOnBG,
+      onSurface: lightOnSurface,
+      onPrimary: lightOnPrimary,
+      onSecondary: lightOnSecondary,
+      error: Colors.red,
+      onError: Colors.red
+    ),
     scaffoldBackgroundColor: lightBG,
     appBarTheme: AppBarTheme(
       elevation: 0,

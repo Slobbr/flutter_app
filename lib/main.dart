@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:slobbr_app/utils/const.dart';
+import 'package:slobbr_app/utils/utils.dart';
 import 'package:slobbr_app/screens/main_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:animations/animations.dart';
@@ -27,4 +28,6 @@ class _SlobbrAppState extends State<SlobbrApp> {
     );
   }
 }
+
+
 

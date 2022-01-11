@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:mapbox_gl/mapbox_gl.dart';
 import 'package:slobbr_app/utils/utils.dart';
+import 'package:slobbr_app/widgets/search_bar.dart';
 import 'package:slobbr_app/widgets/icon_badge.dart';
 
 class MapScreen extends StatefulWidget {
@@ -66,19 +67,28 @@ class _MapScreenState extends State<MapScreen> {
           }
 
 
-          return MapboxMap(
-            accessToken: "pk.eyJ1IjoiYmFzaGF6ZXZlbGQiLCJhIjoiY2twczU0bjJtMDA2ZTJvczdiMno0ZjFlaSJ9.ScVt-VQcblb3YtYW_0ltCA",
-            styleString: style,
-            initialCameraPosition: CameraPosition(
-              zoom: 15.0,
-              target: LatLng(latitude, longitude)
-            ),
-            /*onMapCreated: (MapboxMapController controller) {
-              controller.addSymbol(SymbolOptions(
-                  iconImage:
-                )
-              );
-            }*/
+          return Stack(
+            children: [
+              MapboxMap(
+                accessToken: "pk.eyJ1IjoiYmFzaGF6ZXZlbGQiLCJhIjoiY2twczU0bjJtMDA2ZTJvczdiMno0ZjFlaSJ9.ScVt-VQcblb3YtYW_0ltCA",
+                styleString: style,
+                compassViewPosition: CompassViewPosition.BottomRight,
+                initialCameraPosition: CameraPosition(
+                    zoom: 15.0,
+                    target: LatLng(latitude, longitude)
+                ),
+                    /*onMapCreated: (MapboxMapController controller) {
+                    controller.addSymbol(SymbolOptions(
+                      iconImage:
+                   )
+                 );
+                }*/
+              ),
+              Padding(
+                padding: EdgeInsets.all(20.0),
+                child: SearchBar(),
+              )
+            ],
           );
         }
       )

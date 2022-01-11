@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:slobbr_app/screens/account_screen.dart';
+import 'package:slobbr_app/screens/favorite_screen.dart';
 import 'package:slobbr_app/screens/home.dart';
 import 'package:slobbr_app/widgets/icon_badge.dart';
 import 'package:slobbr_app/screens/map_screen.dart';
+import 'package:slobbr_app/screens/chat_screens/chat_main_screen.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -21,7 +24,10 @@ class _MainScreenState extends State<MainScreen> {
         onPageChanged: onPageChanged,
         children: <Widget>[
           Home(),
-          MapScreen()
+          MapScreen(),
+          FavoriteScreen(),
+          ChatMainScreen(),
+          AccountScreen()
         ],
       ),
       bottomNavigationBar: BottomAppBar(
