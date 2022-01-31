@@ -5,6 +5,8 @@ import 'package:slobbr_app/screens/home.dart';
 import 'package:slobbr_app/widgets/icon_badge.dart';
 import 'package:slobbr_app/screens/map_screen.dart';
 import 'package:slobbr_app/screens/chat_screens/chat_main_screen.dart';
+import 'package:slobbr_app/screens/login_screen.dart';
+import 'package:slobbr_app/utils/utils.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -17,6 +19,16 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    SlobbrPreferences prefs = new SlobbrPreferences();
+
+    if(!prefs.getPref("JWT", prefs.getPrefs())){
+      Navigator.of(context).push(
+          MaterialPageRoute(
+              builder: (BuildContext context) {
+                return const LoginScreen();
+              });
+    }
+
     return Scaffold(
       body: PageView(
         physics: NeverScrollableScrollPhysics(),

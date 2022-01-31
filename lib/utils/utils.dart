@@ -16,15 +16,6 @@ class Utils {
     return returnDouble;
   }
 
-  Future<SharedPreferences> getPrefs() async {
-    return await SharedPreferences.getInstance();
-  }
-
-  void _initPrefs(context, String test) async {
-    SharedPreferences prefs = await Utils(context: context).getPrefs();
-    prefs.setString('test', test);
-  }
-
   bool isDarkModeEnabled() {
     if (MediaQuery.of(context).platformBrightness == Brightness.dark){
       return true;
@@ -32,5 +23,37 @@ class Utils {
       return false;
   }
 }
+}
 
+class SlobbrPreferences {
+
+  SlobbrPreferences();
+
+  Future<SharedPreferences> getPrefs() async {
+    return await SharedPreferences.getInstance();
+  }
+
+  void setPrefString(String key, String value, SharedPreferences prefs) async {
+    await prefs.setString(key, value);
+  }
+
+  void setPrefInt(String key, int value, SharedPreferences prefs) async {
+    await prefs.setInt(key, value);
+  }
+
+  void setPrefBool(String key, bool value, SharedPreferences prefs) async {
+    await prefs.setBool(key, value);
+  }
+
+  void setPrefDouble(String key, double value, SharedPreferences prefs) async {
+    await prefs.setDouble(key, value);
+  }
+
+  void setPrefStringList(String key, List<String> list, SharedPreferences prefs) async {
+    await prefs.setStringList(key, list);
+  }
+
+  getPref(String key, Future<SharedPreferences> prefs) async {
+    return await prefs.get(key);
+  }
 }
